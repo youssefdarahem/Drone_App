@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.drone_for_beaches">
+    <uses-permission android:name="android.permission.INTERNET"/>
    <application
         android:label="drone_for_beaches"
         android:icon="@mipmap/ic_launcher">

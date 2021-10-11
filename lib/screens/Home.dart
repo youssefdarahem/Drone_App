@@ -1,4 +1,5 @@
 import 'package:drone_for_beaches/widgets/drones_widget.dart';
+import 'package:drone_for_beaches/widgets/main_map.dart';
 import 'package:drone_for_beaches/widgets/swimmers_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +11,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
   final List _body = [
-    Text("home"),
+    MainMap(),
     SwimmersWidget(),
     DronesWidget(),
     Text("notifi"),
@@ -29,29 +30,38 @@ class _HomePageState extends State<HomePage> {
       ),
       body: _body[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
-        //backgroundColor: Colors.blue,
+        showUnselectedLabels: false,
+        showSelectedLabels: false,
         currentIndex: _currentIndex,
         onTap: onTabTapped,
         items: [
           BottomNavigationBarItem(
-            backgroundColor: Colors.blue,
-            icon: Icon(Icons.home),
+            icon: Image.asset(
+              'assets/images/home.png',
+              height: 35,
+            ),
             label: "home",
           ),
           BottomNavigationBarItem(
-            backgroundColor: Colors.blue,
-            icon: Icon(Icons.person),
+            icon: Image.asset(
+              'assets/images/swimmer.png',
+              height: 35,
+            ),
             label: "people",
           ),
           BottomNavigationBarItem(
-            backgroundColor: Colors.blue,
-            icon: Icon(Icons.airplanemode_active),
+            icon: Image.asset(
+              'assets/images/drone.png',
+              height: 35,
+            ),
             label: "drones",
           ),
           BottomNavigationBarItem(
-            backgroundColor: Colors.blue,
-            icon: Icon(Icons.notifications),
-            label: "notif",
+            icon: Image.asset(
+              'assets/images/notification.png',
+              height: 35,
+            ),
+            label: "notifications",
           ),
         ],
       ),
