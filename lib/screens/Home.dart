@@ -1,7 +1,7 @@
-import 'package:drone_for_beaches/widgets/drones_widget.dart';
-import 'package:drone_for_beaches/widgets/main_map.dart';
-import 'package:drone_for_beaches/widgets/swimmers_widget.dart';
+import 'package:drone_for_beaches/provider/ui_provider.dart';
+
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -9,31 +9,19 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _currentIndex = 0;
-  final List _body = [
-    MainMap(),
-    SwimmersWidget(),
-    DronesWidget(),
-    Text("notifi"),
-  ];
   @override
   Widget build(BuildContext context) {
-    void onTabTapped(int index) {
-      setState(() {
-        _currentIndex = index;
-      });
-    }
-
+    UiBodyProvider uiBodyProvider = Provider.of<UiBodyProvider>(context);
     return Scaffold(
       appBar: AppBar(
         title: Text("Drones Controll App"),
       ),
-      body: _body[_currentIndex],
+      body: uiBodyProvider.body,
       bottomNavigationBar: BottomNavigationBar(
         showUnselectedLabels: false,
         showSelectedLabels: false,
-        currentIndex: _currentIndex,
-        onTap: onTabTapped,
+        currentIndex: uiBodyProvider.currentIndex,
+        onTap: (index) => uiBodyProvider.onTabTapped(index),
         items: [
           BottomNavigationBarItem(
             icon: Image.asset(
